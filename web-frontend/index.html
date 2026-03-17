@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Off-Highway Guardian - Project Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Off-Highway Guardian</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#system" class="nav-link">System</a></li>
+                <li><a href="#docs" class="nav-link">Documentation</a></li>
+                <li><a href="#demo" class="nav-link">Live Demo</a></li>
+                <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-award"></i>
+                <span>CSD 334 - Project Phase I</span>
+            </div>
+            <h1 class="hero-title">Off-Highway Guardian</h1>
+            <p class="hero-subtitle">Autonomous Accident Detection & Emergency Alert System</p>
+            <p class="hero-description">
+                GPS-independent safety solution for forest and off-road vehicles operating in signal-denied environments
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">&lt;500ms</div>
+                    <div class="stat-label">Detection Time</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">500m+</div>
+                    <div class="stat-label">RF Range</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">₹3,694</div>
+                    <div class="stat-label">System Cost</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Offline</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#docs" class="btn btn-primary">
+                    <i class="fas fa-book"></i> View Documentation
+                </a>
+                <a href="#demo" class="btn btn-secondary">
+                    <i class="fas fa-play"></i> Live Demo
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="system-diagram">
+                <div class="vehicle-unit">
+                    <i class="fas fa-car"></i>
+                    <span>Vehicle Unit</span>
+                </div>
+                <div class="rf-signal">
+                    <i class="fas fa-broadcast-tower"></i>
+                </div>
+                <div class="receiver-unit">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>Receiver Unit</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-subtitle">Advanced safety technology for GPS-denied environments</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>IMU-Based Detection</h3>
+                    <p>Real-time motion monitoring at 50Hz using 6-DOF accelerometer and gyroscope</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Multi-Condition Analysis</h3>
+                    <p>Detects impact, rollover, and spin with 2-of-3 confirmation to reduce false positives</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3>RF Beacon System</h3>
+                    <p>433MHz emergency broadcast with 500m+ range, no GPS or cellular required</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-location-arrow"></i>
+                    </div>
+                    <h3>RSSI Homing</h3>
+                    <p>Signal strength-based localization for rescue teams to find accident site</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-power-off"></i>
+                    </div>
+                    <h3>Fully Autonomous</h3>
+                    <p>Zero driver interaction required, automatic activation on accident detection</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Cost-Effective</h3>
+                    <p>Complete system for ₹3,694, scalable for fleet deployment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Architecture -->
+    <section id="system" class="system">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-subtitle">Two-unit design for comprehensive coverage</p>
+            
+            <div class="system-grid">
+                <div class="system-unit">
+                    <div class="unit-header">
+                        <i class="fas fa-car"></i>
+                        <h3>Vehicle Unit</h3>
+                    </div>
+                    <div class="unit-content">
+                        <h4>Components</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> ESP32 Microcontroller</li>
+                            <li><i class="fas fa-check"></i> MPU-6050 IMU Sensor</li>
+                            <li><i class="fas fa-check"></i> HC-12 RF Module (433MHz)</li>
+                            <li><i class="fas fa-check"></i> 12V to 5V Buck Converter</li>
+                            <li><i class="fas fa-check"></i> Status LEDs & Override Button</li>
+                        </ul>
+                        <h4>Functions</h4>
+                        <ul>
+                            <li><i class="fas fa-cog"></i> Continuous motion monitoring</li>
+                            <li><i class="fas fa-cog"></i> Accident detection algorithm</li>
+                            <li><i class="fas fa-cog"></i> RF beacon transmission</li>
+                            <li><i class="fas fa-cog"></i> Manual override capability</li>
+                        </ul>
+                        <div class="unit-cost">Cost: ₹1,515</div>
+                    </div>
+                </div>
+                
+                <div class="system-unit">
+                    <div class="unit-header">
+                        <i class="fas fa-satellite-dish"></i>
+                        <h3>Receiver Unit</h3>
+                    </div>
+                    <div class="unit-content">
+                        <h4>Components</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> ESP32 Microcontroller</li>
+                            <li><i class="fas fa-check"></i> HC-12 RF Module (433MHz)</li>
+                            <li><i class="fas fa-check"></i> 16x2 LCD Display (I2C)</li>
+                            <li><i class="fas fa-check"></i> RSSI Bar (5 LEDs)</li>
+                            <li><i class="fas fa-check"></i> Buzzer & USB Power Bank</li>
+                        </ul>
+                        <h4>Functions</h4>
+                        <ul>
+                            <li><i class="fas fa-cog"></i> Emergency signal reception</li>
+                            <li><i class="fas fa-cog"></i> Vehicle ID display</li>
+                            <li><i class="fas fa-cog"></i> RSSI homing guidance</li>
+                            <li><i class="fas fa-cog"></i> Audio/visual alerts</li>
+                        </ul>
+                        <div class="unit-cost">Cost: ₹2,179</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="documentation">
+        <div class="container">
+            <h2 class="section-title">Documentation</h2>
+            <p class="section-subtitle">Comprehensive guides and references</p>
+            
+            <div class="docs-grid">
+                <div class="doc-card" data-doc="quick-start">
+                    <div class="doc-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Quick Start Guide</h3>
+                    <p>Get your system running in 30 minutes</p>
+                    <button class="btn-doc">View Guide</button>
+                </div>
+                
+                <div class="doc-card" data-doc="installation">
+                    <div class="doc-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Installation Manual</h3>
+                    <p>Step-by-step hardware setup</p>
+                    <button class="btn-doc">View Manual</button>
+                </div>
+                
+                <div class="doc-card" data-doc="api">
+                    <div class="doc-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>API Reference</h3>
+                    <p>Complete firmware documentation</p>
+                    <button class="btn-doc">View API</button>
+                </div>
+                
+                <div class="doc-card" data-doc="testing">
+                    <div class="doc-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3>Testing Guide</h3>
+                    <p>12 comprehensive test procedures</p>
+                    <button class="btn-doc">View Tests</button>
+                </div>
+                
+                <div class="doc-card" data-doc="hardware">
+                    <div class="doc-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Hardware BOM</h3>
+                    <p>Complete parts list with costs</p>
+                    <button class="btn-doc">View BOM</button>
+                </div>
+                
+                <div class="doc-card" data-doc="faq">
+                    <div class="doc-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>FAQ</h3>
+                    <p>50+ common questions answered</p>
+                    <button class="btn-doc">View FAQ</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2 class="section-title">Live System Demo</h2>
+            <p class="section-subtitle">Interactive simulation of accident detection</p>
+            
+            <div class="demo-container">
+                <div class="demo-controls">
+                    <h3>Simulate Accident</h3>
+                    <div class="control-group">
+                        <button class="demo-btn" id="simulateImpact">
+                            <i class="fas fa-car-crash"></i>
+                            Impact (3g+)
+                        </button>
+                        <button class="demo-btn" id="simulateRollover">
+                            <i class="fas fa-undo"></i>
+                            Rollover (45°+)
+                        </button>
+                        <button class="demo-btn" id="simulateSpin">
+                            <i class="fas fa-sync"></i>
+                            Spin (180°/s+)
+                        </button>
+                        <button class="demo-btn" id="simulateCombined">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Combined
+                        </button>
+                    </div>
+                    <button class="demo-btn reset" id="resetDemo">
+                        <i class="fas fa-redo"></i>
+                        Reset System
+                    </button>
+                </div>
+                
+                <div class="demo-display">
+                    <div class="vehicle-status">
+                        <h3>Vehicle Unit Status</h3>
+                        <div class="status-indicators">
+                            <div class="indicator" id="ledSystem">
+                                <div class="led green"></div>
+                                <span>System Active</span>
+                            </div>
+                            <div class="indicator" id="ledAccident">
+                                <div class="led yellow"></div>
+                                <span>Accident Detected</span>
+                            </div>
+                            <div class="indicator" id="ledBeacon">
+                                <div class="led red"></div>
+                                <span>Beacon Active</span>
+                            </div>
+                        </div>
+                        <div class="sensor-data">
+                            <div class="sensor-reading">
+                                <span>Acceleration:</span>
+                                <span id="accelValue">1.0g</span>
+                            </div>
+                            <div class="sensor-reading">
+                                <span>Tilt Angle:</span>
+                                <span id="tiltValue">0°</span>
+                            </div>
+                            <div class="sensor-reading">
+                                <span>Rotation Rate:</span>
+                                <span id="gyroValue">0°/s</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="receiver-status">
+                        <h3>Receiver Unit Display</h3>
+                        <div class="lcd-display">
+                            <div class="lcd-line" id="lcdLine1">Monitoring...</div>
+                            <div class="lcd-line" id="lcdLine2"></div>
+                        </div>
+                        <div class="rssi-bar">
+                            <span>RSSI:</span>
+                            <div class="rssi-leds">
+                                <div class="rssi-led"></div>
+                                <div class="rssi-led"></div>
+                                <div class="rssi-led"></div>
+                                <div class="rssi-led"></div>
+                                <div class="rssi-led"></div>
+                            </div>
+                            <span id="rssiValue">-80 dBm</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-log">
+                    <h3>System Log</h3>
+                    <div class="log-content" id="logContent">
+                        <div class="log-entry">System initialized - Ready for monitoring</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <h2 class="section-title">Development Roadmap</h2>
+            <p class="section-subtitle">Project phases and current progress</p>
+            <div class="roadmap-bars"></div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Project Team</h2>
+            <p class="section-subtitle">Group 5 - CSA Semester 6</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Adhen C Tom</h3>
+                    <p class="team-id">SHR23CS013</p>
+                    <p class="team-role">Hardware & Firmware</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Aleena Niju</h3>
+                    <p class="team-id">SHR23CS033</p>
+                    <p class="team-role">Testing & Documentation</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Almia Rose Paul</h3>
+                    <p class="team-id">SHR23CS037</p>
+                    <p class="team-role">System Design</p>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Anatt Biju</h3>
+                    <p class="team-id">SHR23CS051</p>
+                    <p class="team-role">Integration & Deployment</p>
+                </div>
+            </div>
+            
+            <div class="team-supervisors">
+                <div class="supervisor">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div>
+                        <h4>Project Guide</h4>
+                        <p>Dr. Raju G, Dean, Dept. of CSE</p>
+                    </div>
+                </div>
+                <div class="supervisor">
+                    <i class="fas fa-user-tie"></i>
+                    <div>
+                        <h4>Project Coordinator</h4>
+                        <p>Anly Antony M</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="institution">
+                <h4>Sahrdaya College of Engineering & Technology</h4>
+                <p>Department of Computer Science and Engineering</p>
+                <p>Kodakara, Kerala, India</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Off-Highway Guardian</h4>
+                    <p>Autonomous safety system for GPS-denied environments</p>
+                    <p class="footer-version">Version 1.0 - January 2026</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#docs">Documentation</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../README.md">README</a></li>
+                        <li><a href="../LICENSE">License (MIT)</a></li>
+                        <li><a href="../CONTRIBUTING.md">Contributing</a></li>
+                        <li><a href="../docs/FAQ.md">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Project Info</h4>
+                    <p>CSD 334 - Project Phase I</p>
+                    <p>Sahrdaya College of Engineering</p>
+                    <p>© 2026 Group 5</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>⚠️ Prototype system for academic purposes - Not for safety-critical applications</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Documentation -->
+    <div id="docModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

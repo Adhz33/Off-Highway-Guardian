@@ -1,0 +1,34 @@
+# Arduino/PlatformIO build files
+*.hex
+*.elf
+*.bin
+*.map
+build/
+.pio/
+.vscode/
+
+# IDE files
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.old
+
+# Test data
+test_results/
+calibration_data/
+
+# Documentation builds
+docs/_build/
+*.pdf
+
+# Temporary files
+tmp/
+temp/
