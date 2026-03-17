@@ -1,5 +1,40 @@
 // Off-Highway Guardian - Frontend Script
 
+// ---- Audio Context for Buzzer Sound ----
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+let audioContext;
+
+function initAudio() {
+    if (!audioContext) {
+        audioContext = new AudioContext();
+    }
+}
+
+function playBuzzerBeep() {
+    initAudio();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = 2000; // 2kHz beep
+    oscillator.type = 'square'; // Square wave for buzzer sound
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.2);
+}
+
+function playBuzzerSequence() {
+    // Play 3 beeps: beep-beep-beep
+    playBuzzerBeep();
+    setTimeout(() => playBuzzerBeep(), 300);
+    setTimeout(() => playBuzzerBeep(), 600);
+}
+
 // ---- Navigation ----
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.querySelector('.nav-menu');
@@ -100,6 +135,9 @@ function confirmAccident(alertType, accel, tilt, gyro) {
     lcdLine1.textContent = 'V:01000001 ' + alertType;
     lcdLine2.textContent = 'RSSI:-80 ' + rssiBar(-80);
     updateRSSI(-80);
+
+    // Play buzzer sound sequence (beep-beep-beep)
+    playBuzzerSequence();
 
     state.rssiInterval = setInterval(() => {
         state.rssi += Math.floor(Math.random() * 11) - 5;
