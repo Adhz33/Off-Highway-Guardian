@@ -1,8 +1,9 @@
 // Off-Highway Guardian - Frontend Script
 
-// ---- Audio Context for Buzzer Sound ----
+// ---- Audio Context for Continuous Alarm Sound ----
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioContext;
+let alarmInterval;
 
 function initAudio() {
     if (!audioContext) {
@@ -28,11 +29,24 @@ function playBuzzerBeep() {
     oscillator.stop(audioContext.currentTime + 0.2);
 }
 
-function playBuzzerSequence() {
-    // Play 3 beeps: beep-beep-beep
+function startContinuousAlarm() {
+    // Stop any existing alarm
+    stopContinuousAlarm();
+    
+    // Play first beep immediately
     playBuzzerBeep();
-    setTimeout(() => playBuzzerBeep(), 300);
-    setTimeout(() => playBuzzerBeep(), 600);
+    
+    // Continue beeping every 500ms (continuous alarm)
+    alarmInterval = setInterval(() => {
+        playBuzzerBeep();
+    }, 500);
+}
+
+function stopContinuousAlarm() {
+    if (alarmInterval) {
+        clearInterval(alarmInterval);
+        alarmInterval = null;
+    }
 }
 
 // ---- Navigation ----
@@ -136,8 +150,8 @@ function confirmAccident(alertType, accel, tilt, gyro) {
     lcdLine2.textContent = 'RSSI:-80 ' + rssiBar(-80);
     updateRSSI(-80);
 
-    // Play buzzer sound sequence (beep-beep-beep)
-    playBuzzerSequence();
+    // Start continuous alarm sound
+    startContinuousAlarm();
 
     state.rssiInterval = setInterval(() => {
         state.rssi += Math.floor(Math.random() * 11) - 5;
@@ -149,7 +163,7 @@ function confirmAccident(alertType, accel, tilt, gyro) {
     let pkt = 1;
     addLog('ACCIDENT CONFIRMED — Activating RF beacon', 'danger');
     addLog('Beacon #' + pkt++ + ' transmitted — Vehicle: 01000001 | Type: ' + alertType, 'warning');
-    addLog('Receiver alert activated — Buzzer sounding', 'warning');
+    addLog('Receiver alert activated — Continuous alarm sounding', 'warning');
 
     state.beaconInterval = setInterval(() => {
         addLog('Beacon #' + pkt++ + ' transmitted — Vehicle: 01000001 | Type: ' + alertType, 'warning');
@@ -159,6 +173,7 @@ function confirmAccident(alertType, accel, tilt, gyro) {
 function resetDemo() {
     clearInterval(state.beaconInterval);
     clearInterval(state.rssiInterval);
+    stopContinuousAlarm(); // Stop the alarm sound
     state.accidentDetected = false;
 
     ledAccident.classList.remove('active');
